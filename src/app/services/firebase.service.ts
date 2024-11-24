@@ -45,4 +45,11 @@ sendRecoveryEmail(email: string){
   return sendPasswordResetEmail(getAuth(),email);
 }
 
+//CerraSesion
+signOut(){
+  getAuth().signOut();
+  localStorage.removeItem('user');
+  this.utilsSvc.routerLink('/login');
+}
+
 }

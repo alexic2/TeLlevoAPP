@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+  form = new FormGroup({
+    uid: new FormControl(''),
+  })
+
+  firebaseSvc = inject(FirebaseService);
+  utilsSvc = inject(UtilsService);
+
   constructor() { }
 
   ngOnInit() {
+  }
+  
+
+  signOut(){
+    this.firebaseSvc.signOut();
   }
 
 }
