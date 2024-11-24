@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SolicitudPageRoutingModule } from './solicitud-routing.module';
+import { InfoConductorPageRoutingModule } from './info-conductor-routing.module';
 
-import { SolicitudPage } from './solicitud.page';
+import { InfoConductorPage } from './info-conductor.page';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    SolicitudPageRoutingModule,
+    InfoConductorPageRoutingModule,
     SharedModule
   ],
-  declarations: [SolicitudPage]
+  declarations: [InfoConductorPage]
 })
-export class SolicitudPageModule {}
+export class InfoConductorPageModule {}

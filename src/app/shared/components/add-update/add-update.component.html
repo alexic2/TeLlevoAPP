@@ -10,7 +10,7 @@
       Crea tu viaje</h1>
     <p class="ion-text-center">Completa los datos</p>
 
-    <form [formGroup]="form" class="ion-padding ion-text-center" >
+    <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()" (keypress.enter)="submit()">
 
       <app-custom-input
       autocomplete="name"
@@ -81,7 +81,7 @@
      
        
 
-      <ion-button   mode="ios" class="ion-margin" type="submit">
+      <ion-button   mode="ios" class="ion-margin" type="submit"  [disabled]="form.invalid">
         Crear Viaje
         <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
       </ion-button>

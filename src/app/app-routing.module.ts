@@ -23,7 +23,8 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./pages/main/main.module').then( m => m.MainPageModule)
-  },  {
+  },
+  {
     path: 'conductor',
     loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule)
   },
@@ -31,6 +32,14 @@ const routes: Routes = [
     path: 'solicitud',
     loadChildren: () => import('./solicitud/solicitud.module').then( m => m.SolicitudPageModule)
   },
+  {
+    path: 'info-conductor',
+    loadChildren: () => import('./info-conductor/info-conductor.module').then( m => m.InfoConductorPageModule)
+  },  {
+    path: 'pasajero',
+    loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule)
+  },
+
 
 ];
 
