@@ -23,7 +23,15 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./pages/main/main.module').then( m => m.MainPageModule)
+  },  {
+    path: 'conductor',
+    loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule)
   },
+  {
+    path: 'solicitud',
+    loadChildren: () => import('./solicitud/solicitud.module').then( m => m.SolicitudPageModule)
+  },
+
 ];
 
 @NgModule({
