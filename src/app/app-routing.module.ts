@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NoAuthGuard } from './guards/no-auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
@@ -10,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
+    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule), canActivate:[NoAuthGuard]
   },
   {
     path: 'sign-up',
@@ -22,7 +24,9 @@ const routes: Routes = [
   },
   {
     path: 'main',
-    loadChildren: () => import('./pages/main/main.module').then( m => m.MainPageModule)
+    loadChildren: () => import('./pages/main/main.module').then( m => m.MainPageModule), canActivate:[AuthGuard
+      
+    ]
   },
   {
     path: 'conductor',
@@ -35,7 +39,8 @@ const routes: Routes = [
   {
     path: 'info-conductor',
     loadChildren: () => import('./info-conductor/info-conductor.module').then( m => m.InfoConductorPageModule)
-  },  {
+  },
+  {
     path: 'pasajero',
     loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule)
   },
