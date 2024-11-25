@@ -17,8 +17,7 @@ export class ConductorPage implements OnInit {
   }
   addUpdate(){
     this.utilsSvc.presentModal({
-      component: AddUpdateComponent,
-      cssClass: 'add-update-modal'
+      component: AddUpdateComponent
     })
 
 }

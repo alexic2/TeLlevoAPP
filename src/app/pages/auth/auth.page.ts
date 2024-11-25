@@ -30,12 +30,18 @@ export class AuthPage implements OnInit {
 
     this.firebaseSvc.signIn(this.form.value as User).then(res => {
       this.getUserInfo(res.user.uid);
-   }).catch(error => {
-      console.log(error);
-      this.utilsSvc.presentToast({message: error.message, duration: 2500, color: 'danger', position: 'middle'});  
-    }).finally(() => {  
+    }).catch(err => {
+      console.error('Error al autenticar usuario:', err);
+      this.utilsSvc.presentToast({ 
+        message: 'Error al autenticar usuario', 
+        duration: 2000,
+        color: 'danger',
+        position:'middle',
+        icon: 'close-circle-outline' 
+      });
+    }).finally(() => {
       loading.dismiss();
-    } );
+    });
     
   }
 }
@@ -57,12 +63,18 @@ async getUserInfo(uid : string) {
     this.utilsSvc.presentToast({message: `Te damos la bienvenida ${user.name}`, duration: 3500, color: 'primary', position: 'middle'});  
 
  
- }).catch(error => {
-    console.log(error);
-    this.utilsSvc.presentToast({message: error.message, duration: 2500, color: 'danger', position: 'middle'});  
-  }).finally(() => {  
+  }).catch(err => {
+    console.error('Error al autenticar usuario:', err);
+    this.utilsSvc.presentToast({ 
+      message: 'Error al autenticar usuario', 
+      duration: 2000,
+      color: 'danger',
+      position:'middle',
+      icon: 'close-circle-outline' 
+    });
+  }).finally(() => {
     loading.dismiss();
-  } );
+  });
   
 }
 }

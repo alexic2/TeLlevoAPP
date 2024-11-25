@@ -6,26 +6,26 @@
   <br>
 
   <h1 style=" font-weight: bold; text-align: center;">
-    ¡Bienvenido a Te Llevo App !</h1>
+    ¡ Bienvenido a Te Llevo App !</h1>
     <p class="ion-text-center">Elige el que te corresponda</p>
 
-  <br>
-    <ion-button expand="block" [routerLink]="['/conductor']" shape="round" routerLinkActive="router-link-active" mode="ios" fill="outline">
+  <br> 
+ 
+    <ion-button expand="block" [routerLink]="['/conductor']" shape="round" routerLinkActive="router-link-active" mode="ios" >
       Conductor
       <ion-icon slot="end"></ion-icon>
     </ion-button>
 <br>
-    <ion-button expand="block" [routerLink]="['/pasajero']" shape="round" routerLinkActive="router-link-active" mode="ios" fill="outline">
+    <ion-button expand="block" [routerLink]="['/pasajero']" shape="round" routerLinkActive="router-link-active" mode="ios" >
       Pasajero
       <ion-icon slot="end"></ion-icon>
     </ion-button>
+     
 <br>
-    <ion-button (click)="signOut()" expand="full" color="danger" shape="round">
-
-
-      Cerrar Sesión
-  
-    
-  </ion-button>
-
- 
+<div class="center-content">
+    <ion-button (click)="signOut()" color="danger"  mode="ios" class="ion-margin" type="submit">
+      Cerrar Sesión</ion-button>
+    </div>
+   
+      
+</ion-content> 

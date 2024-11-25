@@ -1,0 +1,6 @@
+.center-content {
+  display: flex;            /* Activar el modelo flexbox */
+  justify-content: center;  /* Centrar el contenido horizontalmente */
+  align-items: center;      /* Centrar el contenido verticalmente */
+  height: 8vh;            /* Ocupa toda la altura de la pantalla */
+}

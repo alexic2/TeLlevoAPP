@@ -36,18 +36,18 @@ export class UtilsService {
     return JSON.parse(localStorage.getItem(key))
   }
 
+// == Modal ==
+async presentModal(opts: ModalOptions) {
+  const modal = await this.modalCtrl.create(opts);
+  await modal.present();
 
-  async presentModal(opts: ModalOptions) {
-    const modal = await this.modalCtrl.create(opts);
-    await modal.present();
-  
-    const {data } = await modal.onDidDismiss();
-    if (data) return data;
-  
-  }
-  dismissModal(data? : any){
-    return this.modalCtrl.dismiss(data);
-  }
+  const {data } = await modal.onDidDismiss();
+  if (data) return data;
+
+}
+dismissModal(data? : any){
+  return this.modalCtrl.dismiss(data);
+}
   
 }
 

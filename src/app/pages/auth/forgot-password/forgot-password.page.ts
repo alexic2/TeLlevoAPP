@@ -28,12 +28,19 @@ export class ForgotPasswordPage implements OnInit {
     await loading.present();
 
     this.firebaseSvc.sendRecoveryEmail(this.form.value.email).then(res => {
-   }).catch(error => {
-      console.log(error);
-      this.utilsSvc.presentToast({message: error.message, duration: 2500, color: 'danger', position: 'middle'});  
-    }).finally(() => {  
+      this.utilsSvc.routerLink('/main/home');
+    }).catch(err => {
+      console.error('Error al autenticar usuario:', err);
+      this.utilsSvc.presentToast({ 
+        message: 'Error al autenticar usuario', 
+        duration: 2000,
+        color: 'danger',
+        position:'middle',
+        icon: 'close-circle-outline' 
+      });
+    }).finally(() => {
       loading.dismiss();
-    } );
+    });
     
   }
 }

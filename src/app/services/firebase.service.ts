@@ -48,7 +48,7 @@ sendRecoveryEmail(email: string){
 signOut(){
   getAuth().signOut();
   localStorage.removeItem('user');
-  this.utilsSvc.routerLink('/login');
+  this.utilsSvc.routerLink('/auth');
 }
 
 

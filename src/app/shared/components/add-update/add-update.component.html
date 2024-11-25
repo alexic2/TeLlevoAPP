@@ -1,4 +1,4 @@
-<app-header backButton="/"  title="TeLlevoApp"></app-header>
+<app-header [isModal]="true"  title="TeLlevoApp"></app-header>
 
 <ion-content [fullscreen]="true">
 
@@ -60,25 +60,6 @@
       <div *ngIf="form.controls.price.errors?.['required']">Este campo es requerido</div>
       <div *ngIf="form.controls.price.errors?.['min']">Este campo es requerido</div>
      </div>
-
-     <ion-item>
-      <ion-datetime-button datetime="datetime"></ion-datetime-button>
-      <ion-modal [keepContentsMounted]="true">
-        <ng-template>
-          <ion-datetime
-            id="datetime"
-            [formatOptions]="{
-              time: {
-                hour: '2-digit',
-                minute: '2-digit',
-              },
-            }"
-          ></ion-datetime>
-        </ng-template>
-      </ion-modal>
-    </ion-item>
-  
-     
        
 
       <ion-button   mode="ios" class="ion-margin" type="submit"  [disabled]="form.invalid">
