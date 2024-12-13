@@ -57,13 +57,19 @@ setDocument(path: string, data: any){
   return setDoc(doc(getFirestore(), path), data);
 }
 
+  // ==================== Obtener documentos de una coleccion ====================
+  getCollectionData(path: string, collectionQuery?: any) {
+    const ref = collection(getFirestore(), path);
+    return collectionData(query(ref, collectionQuery), { idField: 'id' });
+  }
+
 async getDocument(path: string){
   return (await getDoc(doc(getFirestore(), path))).data();
 }
 
 // ====== Agregar =======
 addDocument(path: string , data:any){
-  return addDoc(collection(getFirestore(), path), data);
+  return addDoc(collection(getFirestore(), path), data);
 }
 
 

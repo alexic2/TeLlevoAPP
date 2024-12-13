@@ -9,57 +9,62 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: './add-update.component.html',
   styleUrls: ['./add-update.component.scss'],
 })
-export class AddUpdateComponent  implements OnInit {
-  
+export class AddUpdateComponent implements OnInit {
   form = new FormGroup({
     id: new FormControl(''),
     name: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    destino: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    destino: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+    ]),
     capacidad: new FormControl('', [Validators.required, Validators.min(0)]),
     price: new FormControl('', [Validators.required, Validators.min(0)]),
-
-  })
+  });
   firebaseSvc = inject(FirebaseService);
   utilsSvc = inject(UtilsService);
 
   user = {} as User;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {}
 
-  async submit(){
+  ngOnInit() {
+    this.user = this.utilsSvc.getFromLocalStorage('user');
+  }
+
+  async submit() {
     if (this.form.valid) {
-      
-      let path =`ùsers/${this.user.uid}/viajes`
-      
-      delete this.form.value.id
+      let path = `users/${this.user.uid}/viajes`;
 
-      this.firebaseSvc.addDocument(path, this.form.value).then(async res => {
+      const loading = await this.utilsSvc.loading();
+      await loading.present();
 
-        this.utilsSvc.dismissModal({success: true});
-      
-        this.utilsSvc.presentToast({
-          message: 'Producto creado exitosamente',
-          color: 'success',
-          duration: 1500,
-          position: 'middle',
-          icon: 'checkmark-circle-outline'
+      delete this.form.value.id;
+
+      this.firebaseSvc
+        .addDocument(path, this.form.value)
+        .then(async (res) => {
+          this.utilsSvc.dismissModal({ success: true });
+
+          this.utilsSvc.presentToast({
+            message: 'Viaje creado exitosamente',
+            color: 'success',
+            duration: 1500,
+            position: 'middle',
+            icon: 'checkmark-circle-outline',
+          });
         })
-        
-      
-
-
-      }).catch(error => {
-
-        this.utilsSvc.presentToast({
-          message: 'Error verifique que los datos esten correctos',
-          color: 'danger',
-          duration: 2500,
-          position: 'middle',
-          icon: 'alert-circle-outline'
+        .catch((error) => {
+          this.utilsSvc.presentToast({
+            message: 'Error verifique que los datos esten correctos',
+            color: 'danger',
+            duration: 2500,
+            position: 'middle',
+            icon: 'alert-circle-outline',
+          });
         })
-    
-        
-
-      })
-    }}}
+        .finally(() => {
+          loading.dismiss();
+        });
+    }
+  }
+}
