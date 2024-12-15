@@ -1,6 +1,14 @@
 export interface Viaje {
-    capacidad: Number,
-    destino: String,
-    name: String,
-    price: Number
+    id: string;
+    name: string;
+    destino: string;
+    capacidad: number;
+    price: number;
+    estado: 'pendiente' | 'aceptado';
+      // Agregar información del usuario solicitante
+  usuarioSolicitante?: {
+    nombre: string;
+    email: string;
+    uid: string;
+  };
 }

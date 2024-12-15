@@ -1,28 +1,38 @@
-<app-header backButton="/"  ></app-header>
+<app-header backButton="/"></app-header>
 
 <ion-content [fullscreen]="true">
   <br>
-  <h3 class="titulo ion-text-center" >SOLICITUDES</h3>
+  <h3 class="titulo ion-text-center">SOLICITUDES</h3>
   <br>
   
   <div class="container">
-    <ion-card >
+    <ion-card>
       <ion-list>
-       <ion-item *ngFor="let solicitud of solicitudes"><!--cam-->
-         <!--info usuario que solicita-->
-         <ion-label>
-           <h2>{{solicitud.nombre}}</h2>
-         </ion-label>
-       
-   
-      <ion-button color="tertiary" (click)="aceptarSolicitud(solicitud)">Aceptar
-      </ion-button>
-      
-       <!--Borrar-->
-      <ion-button slot="end" color="danger" (click)="rechazarSolicitud(solicitud)">rechazar</ion-button>
-     
-     </ion-item>
-   </ion-list>
-     </ion-card>
+        <ion-item *ngFor="let solicitud of solicitudes">
+          <ion-label>
+            <h2>{{solicitud.name}}</h2>
+            <p>Destino: {{solicitud.destino}}</p>
+            <p>Capacidad: {{solicitud.capacidad}} personas</p>
+            <p>Precio: ${{solicitud.price}}</p>
+          </ion-label>
+          
+          <div class="botones-accion">
+            <ion-button class="aceptar" shape="round"size="small" (click)="aceptarSolicitud(solicitud)">
+              <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+              Aceptar
+            </ion-button>
+            
+            <ion-button class="eliminar" shape="round" size="small" (click)="rechazarSolicitud(solicitud)">
+              <ion-icon slot="start" name="close-outline"></ion-icon>
+              Rechazar
+            </ion-button>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card>
   </div>
+
+  <ion-text color="medium" class="ion-text-center" *ngIf="solicitudes.length === 0">
+    <p>No tienes solicitudes pendientes</p>
+  </ion-text>
 </ion-content>

@@ -22,6 +22,11 @@
             <ion-icon name="people-outline" slot="start"></ion-icon>
             <ion-label>Capacidad: {{ viaje.capacidad }}</ion-label>
           </ion-item>
+
+          <ion-button expand="block" class="ion-text-center ion-margin"shape="round"color="primary" (click)="reservarViaje(viaje)">
+            <ion-icon name="car-outline" slot="start"></ion-icon>
+            Reservar Viaje
+          </ion-button>
         </ion-card-content>
       </ion-card>
   

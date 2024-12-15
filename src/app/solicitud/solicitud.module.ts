@@ -20,3 +20,10 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [SolicitudPage]
 })
 export class SolicitudPageModule {}
+
+export interface Solicitud {
+  nombre: string;
+  destino: string;
+  capacidad: number;
+  precio: number;
+}
