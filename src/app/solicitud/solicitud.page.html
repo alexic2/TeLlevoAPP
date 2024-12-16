@@ -10,10 +10,8 @@
       <ion-list>
         <ion-item *ngFor="let solicitud of solicitudes">
           <ion-label>
-            <h2>{{solicitud.name}}</h2>
-            <p>Destino: {{solicitud.destino}}</p>
-            <p>Capacidad: {{solicitud.capacidad}} personas</p>
-            <p>Precio: ${{solicitud.price}}</p>
+            <h2>{{user().name}}</h2>
+            <p>{{user().email}}</p>
           </ion-label>
           
           <div class="botones-accion">
